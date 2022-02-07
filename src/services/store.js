@@ -1,22 +1,27 @@
-import { createStore } from 'react-redux'
+import { createStore } from 'redux'
 
 // state
 const initialState = {
-    data: null,
+    date: null,
+    data: null
 }
 
 // action creators
-
-const setDatas = (datas) => ({
-    type: "datas",
-    payload: {name: datas.name}
+const setDate = (date) => ({
+    type: "date",
+    payload: date
 });
 
 // reducer
-
 function reducer(state, action) {
     if (action.type === "datas") {
         return state;
+    }
+    if (action.type === "date") {
+        return {
+            ...state,
+            date: action.payload
+        }
     }
     return state;
 }
@@ -29,4 +34,4 @@ store.subscribe(() => {
   console.log(state);
 });
 
-export { store, setDatas };
+export { store, setDate };

@@ -1,10 +1,11 @@
-import React from 'react'
-
+import React, { useState } from 'react'
+import { DateTimePicker } from 'datetime-picker-reactjs'
+import 'datetime-picker-reactjs/dist/index.css'
 function Form() {
-    const saveEmployee = () =>{
+    const [value, onChange] = useState(new Date())
+    const saveEmployee = () => {
         console.log('save');
     }
-
     return (
         <form action='#' id='create-employee'>
             <label for='first-name'>First Name</label>
@@ -12,9 +13,18 @@ function Form() {
             <label for='last-name'>Last Name</label>
             <input type='text' id='last-name' />
             <label for='date-of-birth'>Date of Birth</label>
-            <input type='text' id='date-of-birth' />
+            <DateTimePicker
+            onChange={onChange}
+            value={value}
+            />
+            {/* <input type='text' id='date-of-birth'>
+            </input> */}
             <label for='start-date'>Start Date</label>
-            <input type='text' id='start-date' />
+            <DateTimePicker
+            onChange={onChange}
+            value={value}
+            />
+            {/* <input type='text' id='start-date'></input> */}
             <fieldset className='address'>
                 <legend>Address</legend>
 
