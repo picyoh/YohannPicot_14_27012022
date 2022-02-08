@@ -4,17 +4,27 @@ import { rrtableReducer } from 'react-redux-table';
 // state
 const initialState = {
     datas: null,
-    rrtable: true,
+    form: null,
+    rrtable: true
 }
 
 // action creators
-const setDatas = (datas) => ({
-    type: "datas",
-    payload: datas
-});
+const getDatas = (form) =>{
+    return {
+        type: "form",
+        payload: form
+    }
+}
+
+const getForm = (form) =>{
+    return {
+        type: "form",
+        payload: form
+    }
+}
 
 // reducer
-function reducer(state = null, action) {
+function datasReducer(state = null, action) {
     if (action.type === "datas") {
         return {
             ...state,
@@ -23,10 +33,12 @@ function reducer(state = null, action) {
     }
     return state;
 }
+
 const rootReducer = combineReducers({
-    datas: reducer,
+    datas: datasReducer,
     rrtable: rrtableReducer,
 })
+
 // store
 const store = createStore(rootReducer, initialState);
 

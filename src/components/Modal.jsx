@@ -6,4 +6,4 @@ function Modal(){
     )
 }
 
-export default Modal
+export { Modal }

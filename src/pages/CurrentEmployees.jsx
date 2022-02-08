@@ -19,7 +19,15 @@ function Current() {
 
   return (
     <div id='employee-div' className='container'>
-      <Table headersArray={headArray} rowsContent={rowsContent} />
+      <Table 
+      headersArray={headArray} 
+      rowsContent={rowsContent}
+      title="Current Employees"
+      filter={true}
+      entriesSelector={[10, 100]}
+      showEntries={true}
+      hideButtons={false}
+      />
       <Link to='/'>Home</Link>
     </div>
   )

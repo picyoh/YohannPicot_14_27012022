@@ -7,14 +7,23 @@ import { states } from '../services/states'
 import { departments } from '../services/departments'
 
 import { SelectUi } from './SelectUi'
+import { Modal } from './Modal'
 
 function CreateEmployeeForm() {
+    
     const [birthDay, changeBirth] = useState(new Date())
     const [startDay, changeStart] = useState(new Date())
-    const saveEmployee = () => {
+    const [newEmployeeSaved, saveEmployee] = useState(false);
+
+    const submitForm = () => {
         console.log('save');
+        saveEmployee(true)
     }
-    
+
+    // if (newEmployeeSaved) {
+    //     return <Modal />
+    // }
+
     return (
         <form action='#' id='create-employee'>
             <label htmlFor='first-name'>First Name</label>
@@ -34,7 +43,6 @@ function CreateEmployeeForm() {
                 onChange={changeStart}
                 value={startDay}
             />
-            {/* <input type='text' id='start-date'></input> */}
             <fieldset className='address'>
                 <legend>Address</legend>
 
@@ -44,9 +52,8 @@ function CreateEmployeeForm() {
                 <label htmlFor="city">City</label>
                 <input id="city" type="text" />
 
-                <label htmlFor="state">State</label>
                 <SelectUi
-                name='states'
+                name='state'
                 options={ states }
                 />
 
@@ -58,7 +65,7 @@ function CreateEmployeeForm() {
             name='department' 
             options={ departments }
             />
-            <button onClick={saveEmployee}>Save</button>
+            <button onClick={submitForm}>Save</button>
         </form>
     )
 }
