@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import Header from '../layouts/Header'
-import Form from '../components/CreateEmployeeForm'
+import CreateEmployeeForm from '../components/CreateEmployeeForm'
 
 function Create() {
     return (
@@ -11,7 +11,7 @@ function Create() {
             <div className='container'>
                 <Link to='/employee-list'>View Current Employees</Link>
                 <h2>Create Employee</h2>
-                <Form />
+                <CreateEmployeeForm />
             </div>
         </div>
     )

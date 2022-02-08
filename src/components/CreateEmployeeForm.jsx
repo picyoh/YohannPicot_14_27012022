@@ -1,56 +1,66 @@
 import React, { useState } from 'react'
+
 import { DateTimePicker } from 'datetime-picker-reactjs'
 import 'datetime-picker-reactjs/dist/index.css'
-function Form() {
-    const [value, onChange] = useState(new Date())
+
+import { states } from '../services/states'
+import { departments } from '../services/departments'
+
+import { SelectUi } from './SelectUi'
+
+function CreateEmployeeForm() {
+    const [birthDay, changeBirth] = useState(new Date())
+    const [startDay, changeStart] = useState(new Date())
     const saveEmployee = () => {
         console.log('save');
     }
+    
     return (
         <form action='#' id='create-employee'>
-            <label for='first-name'>First Name</label>
+            <label htmlFor='first-name'>First Name</label>
             <input type='text' id='first-name' />
-            <label for='last-name'>Last Name</label>
+            
+            <label htmlFor='last-name'>Last Name</label>
             <input type='text' id='last-name' />
-            <label for='date-of-birth'>Date of Birth</label>
+            
+            <label htmlFor='date-of-birth'>Date of Birth</label>
             <DateTimePicker
-            onChange={onChange}
-            value={value}
+                onChange={changeBirth}
+                value={birthDay}
             />
-            {/* <input type='text' id='date-of-birth'>
-            </input> */}
-            <label for='start-date'>Start Date</label>
+            
+            <label htmlFor='start-date'>Start Date</label>
             <DateTimePicker
-            onChange={onChange}
-            value={value}
+                onChange={changeStart}
+                value={startDay}
             />
             {/* <input type='text' id='start-date'></input> */}
             <fieldset className='address'>
                 <legend>Address</legend>
 
-                <label for="street">Street</label>
+                <label htmlFor="street">Street</label>
                 <input id="street" type="text" />
 
-                <label for="city">City</label>
+                <label htmlFor="city">City</label>
                 <input id="city" type="text" />
 
-                <label for="state">State</label>
-                <select name="state" id="state"></select>
+                <label htmlFor="state">State</label>
+                <SelectUi
+                name='states'
+                options={ states }
+                />
 
-                <label for="zip-code">Zip Code</label>
+                <label htmlFor="zip-code">Zip Code</label>
                 <input id="zip-code" type="number" />
             </fieldset>
-            <label for='departement-button'>Department</label>
-            <select name="department" id="department">
-                <option>Sales</option>
-                <option>Marketing</option>
-                <option>Engineering</option>
-                <option>Human Resources</option>
-                <option>Legal</option>
-            </select>
+            <label htmlFor='department-button'>Department</label>
+            <SelectUi 
+            name='department' 
+            options={ departments }
+            />
             <button onClick={saveEmployee}>Save</button>
         </form>
     )
 }
 
-export default Form
+export default CreateEmployeeForm

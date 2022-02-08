@@ -1,37 +1,38 @@
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux';
+import { rrtableReducer } from 'react-redux-table';
 
 // state
 const initialState = {
-    date: null,
-    data: null
+    datas: null,
+    rrtable: true,
 }
 
 // action creators
-const setDate = (date) => ({
-    type: "date",
-    payload: date
+const setDatas = (datas) => ({
+    type: "datas",
+    payload: datas
 });
 
 // reducer
-function reducer(state, action) {
+function reducer(state = null, action) {
     if (action.type === "datas") {
-        return state;
-    }
-    if (action.type === "date") {
         return {
             ...state,
-            date: action.payload
+            datas: action.payload
         }
     }
     return state;
 }
-
+const rootReducer = combineReducers({
+    datas: reducer,
+    rrtable: rrtableReducer,
+})
 // store
-const store = createStore(reducer, initialState);
+const store = createStore(rootReducer, initialState);
 
 store.subscribe(() => {
   const state = store.getState();
   console.log(state);
 });
 
-export { store, setDate };
+export { store, setDatas };
