@@ -2,7 +2,9 @@ import React from 'react'
 
 function Modal(){
     return(
-        <div>Modal</div>
+        alert(
+            <div>Modal</div>
+        )
     )
 }
 

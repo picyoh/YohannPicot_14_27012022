@@ -1,43 +1,68 @@
-import { createStore, combineReducers } from 'redux';
-import { rrtableReducer } from 'react-redux-table';
+import { createStore, combineReducers } from "redux";
+import { rrtableReducer } from "react-redux-table";
 
 // state
 const initialState = {
-    datas: null,
-    form: null,
-    rrtable: true
-}
+  datas: [],
+  rrtable: true,
+};
 
 // action creators
-const getDatas = (form) =>{
-    return {
-        type: "form",
-        payload: form
-    }
-}
+const setDatas = (value) => {
+  return {
+    type: "setDatas",
+    payload: value,
+  };
+};
 
-const getForm = (form) =>{
-    return {
-        type: "form",
-        payload: form
-    }
-}
+const getForm = (value, category) => {
+  return {
+    type: "getForm",
+    payload: value,
+    category: category,
+  };
+};
 
 // reducer
-function datasReducer(state = null, action) {
-    if (action.type === "datas") {
-        return {
-            ...state,
-            datas: action.payload
-        }
+function datasReducer(state = initialState, action) {
+  if (action.type === "setDatas") {
+      return[
+          ...state,
+          action.payload
+      ]
+  }
+  if (action.type === "getForm") {
+    console.log(action.category);
+    switch (action.category) {
+      case "first-name":
+        return { ...state, firstName: action.payload };
+      case "last-name":
+        return { ...state, lastName: action.payload };
+      case "date-of-birth":
+        return { ...state, dateOfBirth: action.payload };
+      case "start-date":
+        return { ...state, startDate: action.payload };
+      case "street":
+        return { ...state, street: action.payload };
+      case "city":
+        return { ...state, city: action.payload };
+      case "state":
+        return { ...state, state: action.payload };
+      case "zip-code":
+        return { ...state, zipCode: action.payload };
+      case "department":
+        return { ...state, department: action.payload };
+      default:
+        return state;
     }
-    return state;
+  }
+  return state;
 }
 
 const rootReducer = combineReducers({
-    datas: datasReducer,
-    rrtable: rrtableReducer,
-})
+  datas: datasReducer,
+  rrtable: rrtableReducer,
+});
 
 // store
 const store = createStore(rootReducer, initialState);

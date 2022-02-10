@@ -9,13 +9,3 @@ const headArray = [
     { title: "State", category: "state" },
     { title: "Zip Code", category: "zipCode" },
 ]
-
-<Table
-headersArray={headArray}
-rowsContent={rowsContent}
-title='Current Employees'
-filter={true}
-entriesSelector={[10, 100]}
-showEntries={true}
-hideButtons={true}
-/>

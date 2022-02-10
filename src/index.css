@@ -21,3 +21,7 @@ label {
 .address {
     margin-top: 10px;
 }
+
+.submit-button {
+   margin : 1rem 40%;
+}

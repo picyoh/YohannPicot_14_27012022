@@ -11,8 +11,8 @@ import { store } from './services/store'
 
 import './index.css'
 
-import Create from './pages/CreateEmployee'
-import Current from './pages/CurrentEmployees'
+import CreateEmployee from './pages/CreateEmployee'
+import EmployeeList from './pages/EmployeeList'
 import Error from './layouts/Error'
 
 ReactDOM.render(
@@ -20,8 +20,8 @@ ReactDOM.render(
     <React.StrictMode>
       <Router>
         <Routes>
-          <Route path='/' element={<Create />} />
-          <Route path='/employee-list' element={<Current />} />
+          <Route path='/' element={<CreateEmployee />} />
+          <Route path='/employee-list' element={<EmployeeList />} />
           <Route path='/error' element={<Error />} />
           <Route path='/*' element={<Navigate to='/error' />} />
         </Routes>
