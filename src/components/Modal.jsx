@@ -1,10 +1,11 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 
-import Modal from 'react-modal'
+import ReactModal from 'react-modal'
 
-const customStyles = {
+const customStyle = {
     content: {
-        top:'50%',
+        top: '50%',
         left: '50%',
         right: 'auto',
         bottom: 'auto',
@@ -13,14 +14,15 @@ const customStyles = {
     }
 };
 
-Modal.setAppElement('')
+ReactModal.setAppElement('#root');
 
-function Modal(){
+function Modal() {
     let subtitle;
-    const [modalIsOpen, setIsOpen] = React.useState(false);
+    const dispatch = useDispatch();
+    const modalIsOpen = useSelector((state) => state.modalIsOpen)
 
     const openModal = () => {
-        setIsOpen(true)
+        dispatch({type: "setModal"})
     }
 
     const afterOpenModal = () => {
@@ -28,20 +30,20 @@ function Modal(){
     }
 
     const closeModal = () => {
-        setIsOpen(false);
+        
     }
 
-    return(
-        <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={}
-        onRequestClose={}
-        style={}
-        contentLabel={}
-        >
-            <p>Employee Created!</p>
-        </Modal>
+    return (
+            <ReactModal
+                isOpen={modalIsOpen}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={dispatch(setModal(false))}
+                style={customStyle}
+                contentLabel="employee created"
+            >
+                <p>Employee Created!</p>
+            </ReactModal>
     )
 }
 
-export { Modal }
+export default Modal

@@ -3,11 +3,15 @@ import { rrtableReducer } from "react-redux-table";
 
 // state
 const initialState = {
-  datas: [],
+  modalIsOpen: false,
+  employeesDatas: [],
   rrtable: true,
 };
 
 // action creators
+const setModal = () => {
+  return {type: "setModal"}
+}
 const setDatas = (value) => {
   return {
     type: "setDatas",
@@ -25,6 +29,12 @@ const getForm = (value, category) => {
 
 // reducer
 function datasReducer(state = initialState, action) {
+  if (action.type === "setModal"){
+    return {
+      ...state,
+      state: !state
+    }
+  }
   if (action.type === "setDatas") {
       return[
           ...state,

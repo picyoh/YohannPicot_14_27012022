@@ -7,13 +7,13 @@ import {
   Navigate
 } from "react-router-dom"
 import { Provider } from 'react-redux'
-import { store } from './services/store'
+import { store } from './redux/store'
 
 import './index.css'
 
 import CreateEmployee from './pages/CreateEmployee'
 import EmployeeList from './pages/EmployeeList'
-import Error from './layouts/Error'
+import Error from './pages/Error'
 
 ReactDOM.render(
   <Provider store={store}>
