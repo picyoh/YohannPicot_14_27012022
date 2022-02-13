@@ -7,5 +7,5 @@ export const headArray = [
     { title: "Street", category: "street" },
     { title: "City", category: "city" },
     { title: "State", category: "state" },
-    { title: "Zip Code", category: "zip-code" },
+    { title: "Zip Code", category: "zip-code" }
 ]

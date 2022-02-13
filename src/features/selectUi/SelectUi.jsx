@@ -1,7 +1,7 @@
 import React from 'react'
 
 function SelectUi(props) {
-    const { name, options } = props;
+    const {name, options} = props;
     const upperName = name.charAt(0).toUpperCase() + name.slice(1);
     return (
         <>

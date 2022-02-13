@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function Error(){
     return(
         <div className='error'>
-            <h2>An error happened</h2>
+            <h2>An error occurred</h2>
             <Link to="/">Home</Link>
         </div>
     )

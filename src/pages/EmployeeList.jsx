@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 import { Table } from 'react-redux-table';
 
 import { useStore, useSelector } from 'react-redux'
-import { setDatas } from '../redux/store'
+import { setDatas } from '../features/form/employeeSlice'
 
-import { headArray } from '../components/selectUi/datas/tableHead'
+import { headArray } from '../features/table/dataFormat/tableHead'
 
 import { rowsContent } from '../mockedDatas/mockedTable'
 
 function EmployeeList() {
   // get datas
   const store = useStore();
-  const employeeDatas = useSelector((state) => state.datas);
+  const employeeDatas = useSelector((state) => state.employee.datas);
   // load mocked data
   if (employeeDatas.length < 2) {
     rowsContent.forEach(row => {

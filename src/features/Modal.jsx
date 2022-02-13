@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
 import ReactModal from 'react-modal'
+import setModal from './form/employeeSlice'
 
 const customStyle = {
     content: {
@@ -19,18 +20,10 @@ ReactModal.setAppElement('#root');
 function Modal() {
     let subtitle;
     const dispatch = useDispatch();
-    const modalIsOpen = useSelector((state) => state.modalIsOpen)
-
-    const openModal = () => {
-        dispatch({type: "setModal"})
-    }
+    const modalIsOpen = useSelector((state) => state.modal)
 
     const afterOpenModal = () => {
         subtitle.style.color = '#f00';
-    }
-
-    const closeModal = () => {
-        
     }
 
     return (

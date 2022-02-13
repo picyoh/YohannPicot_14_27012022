@@ -3,13 +3,12 @@ import React, { useState } from 'react'
 import Datetime from 'react-datetime'
 import "react-datetime/css/react-datetime.css";
 
-import { states } from './selectUi/datas/states'
-import { departments } from './selectUi/datas/departments'
-
-import { SelectUi } from './selectUi/SelectUi'
+import { SelectUi } from '../selectUi/SelectUi'
+import { state } from '../selectUi/datas/state'
+import { department } from '../selectUi/datas/department'
 
 import { useDispatch } from 'react-redux';
-import { getForm, setDatas } from '../redux/store'
+import { getForm, setDatas, setModal } from './employeeSlice'
 
 function EmployeeForm() {
 
@@ -34,12 +33,13 @@ function EmployeeForm() {
             // set data Object
             formDatas.push({ cellValue: input.value, category: input.id })
             // set form datas to data pool
-            // dispatch(getForm( input.value, input.id ));
+            // dispatch(getForm(formDatas));
         })
 
         console.log(formDatas)
         if (formDatas.length === 9) {
             dispatch(setDatas(formDatas));
+            dispatch(setModal());
         }
         savingEmployee(true)
     }
@@ -78,7 +78,7 @@ return (
 
             <SelectUi
                 name='state'
-                options={states}
+                options={state}
             />
 
             <label htmlFor="zip-code">Zip Code</label>
@@ -86,7 +86,7 @@ return (
         </fieldset>
         <SelectUi
             name='department'
-            options={departments}
+            options={department}
         />
         <br />
         <button className='submit-button'>Save</button>
