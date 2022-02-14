@@ -25,3 +25,11 @@ label {
 .submit-button {
    margin : 1rem 40%;
 }
+
+.close-modal {
+    position: relative;
+    padding: 0 0.2rem;
+    border-radius: 50%;
+    color: white;
+    background-color: black;
+}
