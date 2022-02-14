@@ -1,11 +1,11 @@
 export const headArray = [
-    { title: "First Name", category: "first-name" },
-    { title: "Last Name", category: "last-name" },
-    { title: "Start Date", category: "start-date" },
+    { title: "First Name", category: "firstName" },
+    { title: "Last Name", category: "lastName" },
+    { title: "Start Date", category: "startDate" },
     { title: "Department", category: "department" },
-    { title: "Date of Birth", category: "date-of-birth" },
+    { title: "Date of Birth", category: "dateOfBirth" },
     { title: "Street", category: "street" },
     { title: "City", category: "city" },
     { title: "State", category: "state" },
-    { title: "Zip Code", category: "zip-code" }
+    { title: "Zip Code", category: "zipCode" }
 ]

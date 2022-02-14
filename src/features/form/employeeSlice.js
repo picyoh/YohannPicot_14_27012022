@@ -1,10 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, current } from '@reduxjs/toolkit'
 
-export const employeeSlice = createSlice({
-    name:'employee',
+export const formSlice = createSlice({
+    name:'form',
     initialState: {
         datas: [],
-        employee: [],
+        employee: [
+            {cellValue: "",category:"firstName"},
+            {cellValue: "",category:"lastName"},
+            {cellValue: "",category:"dateOfBirth"},
+            {cellValue: "",category:"startDate"},
+            {cellValue: "",category:"street"},
+            {cellValue: "",category:"city"},
+            {cellValue: "",category:"state"},
+            {cellValue: "",category:"zipCode"},
+            {cellValue: "",category:"department"},
+        ],
         modal: false,
     },
     reducers: {
@@ -12,14 +22,16 @@ export const employeeSlice = createSlice({
             state.datas.push(action.payload)
         },
         getForm: (state, action) => {
-            state.employee.push(action.payload)
+            const {cellValue, category} = action.payload;
+            const newRow = state.employee.findIndex(row => row.category === category)
+            state.employee[newRow].cellValue = cellValue
         },
-        setModal: (state, action) => {
-            state.modal = action.payload
+        setModal: (state) => {
+            state.modal = !state.modal
         }
     }
 });
 
-export const { setDatas, setModal, getForm } = employeeSlice.actions;
+export const { setDatas, setModal, getForm } = formSlice.actions;
 
-export default employeeSlice.reducer;
+export default formSlice.reducer;

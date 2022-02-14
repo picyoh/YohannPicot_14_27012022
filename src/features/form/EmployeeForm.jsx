@@ -14,13 +14,11 @@ function EmployeeForm() {
 
     const [birthDay, changeBirth] = useState(new Date())
     const [startDay, changeStart] = useState(new Date())
-    const [isSaving, savingEmployee] = useState(false);
 
     const dispatch = useDispatch();
     const saveEmployee = (e) => {
         e.preventDefault();
-        // check names in datas
-        // birthday > startDay
+
         const formDatas = [];
         const inputs = Array.from(e.target);
 
@@ -33,28 +31,27 @@ function EmployeeForm() {
             // set data Object
             formDatas.push({ cellValue: input.value, category: input.id })
             // set form datas to data pool
-            // dispatch(getForm(formDatas));
+            dispatch(getForm({ cellValue: input.value, category: input.id }));
         })
 
-        console.log(formDatas)
+        // console.log(formDatas)
         if (formDatas.length === 9) {
             dispatch(setDatas(formDatas));
-            dispatch(setModal(true));
+            dispatch(setModal());
         }
-        savingEmployee(true)
     }
 
 return (
     <form id='create-employee' onSubmit={saveEmployee}>
-        <label htmlFor='first-name'>First Name</label>
-        <input type='text' id='first-name' />
+        <label htmlFor='firstName'>First Name</label>
+        <input type='text' id='firstName' />
 
-        <label htmlFor='last-name'>Last Name</label>
-        <input type='text' id='last-name' />
+        <label htmlFor='lastName'>Last Name</label>
+        <input type='text' id='lastName' />
 
-        <label htmlFor='date-of-birth'>Date of Birth</label>
+        <label htmlFor='dateOfBirth'>Date of Birth</label>
         <Datetime
-            inputProps={{ id: "date-of-birth" }}
+            inputProps={{ id: "dateOfBirth" }}
             timeFormat={false}
             onChange={changeBirth}
             value={birthDay}
@@ -62,7 +59,7 @@ return (
 
         <label htmlFor='start-date'>Start Date</label>
         <Datetime
-            inputProps={{ id: "start-date" }}
+            inputProps={{ id: "startDate" }}
             timeFormat={false}
             onChange={changeStart}
             value={startDay}
@@ -81,8 +78,8 @@ return (
                 options={state}
             />
 
-            <label htmlFor="zip-code">Zip Code</label>
-            <input id="zip-code" type="number" />
+            <label htmlFor="zipCode">Zip Code</label>
+            <input id="zipCode" type="number" />
         </fieldset>
         <SelectUi
             name='department'
