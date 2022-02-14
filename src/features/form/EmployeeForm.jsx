@@ -39,7 +39,7 @@ function EmployeeForm() {
         console.log(formDatas)
         if (formDatas.length === 9) {
             dispatch(setDatas(formDatas));
-            dispatch(setModal());
+            dispatch(setModal(true));
         }
         savingEmployee(true)
     }

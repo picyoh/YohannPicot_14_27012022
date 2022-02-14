@@ -15,7 +15,7 @@ export const employeeSlice = createSlice({
             state.employee.push(action.payload)
         },
         setModal: (state, action) => {
-            state.modal = !state.modal
+            state.modal = action.payload
         }
     }
 });

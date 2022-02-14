@@ -18,24 +18,30 @@ const customStyle = {
 ReactModal.setAppElement('#root');
 
 function Modal() {
-    let subtitle;
     const dispatch = useDispatch();
-    const modalIsOpen = useSelector((state) => state.modal)
-
+    const modalIsOpen = useSelector((state) => state.employee.modal)
+    console.log(modalIsOpen)
     const afterOpenModal = () => {
-        subtitle.style.color = '#f00';
+        // console.log(subtitle)
+        // subtitle.style.color = 'black';
+    }
+    const closeModal = () => {
+        dispatch(setModal(false))
     }
 
     return (
+        <>
             <ReactModal
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenModal}
-                onRequestClose={dispatch(setModal(false))}
+                onRequestClose={closeModal}
                 style={customStyle}
                 contentLabel="employee created"
             >
                 <p>Employee Created!</p>
             </ReactModal>
+            <button className='close-modal' onClick={closeModal}>X</button>
+        </>
     )
 }
 
