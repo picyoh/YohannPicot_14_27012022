@@ -1,35 +1,135 @@
-.title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap");
+
+root {
+  --primary-color: #5a6f0a;
+  --secondary: #93ad18;
 }
 
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.title {
+  display: flex;
+  height: 10vh;
+  flex: 100%;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 3px lightgrey;
+  background-color: white;
+}
+
+h2 {
+  color: #5a6f0a;
+}
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: whitesmoke;
+}
+
+nav {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+  background-color: whitesmoke;
+}
+
+nav a {
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.3rem;
+  color: white;
+  text-decoration: none;
+  margin: 1rem;
+  background-color: #93ad18;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+nav a:visited {
+  color: white;
+  background-color: #5a6f0a;
+  text-decoration: none;
+}
+
+form {
+  max-width: 60%;
+  border-radius: 0.3rem;
+  padding: 2rem;
+  background-color: white;
+  box-shadow: 0 0 3rem lightgrey;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.inputWrap {
+  flex: 40%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 label {
-    display: block;
-    margin-top: 1rem;
-    margin-bottom: 10px;
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 0.6rem 1.6rem;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  border-radius: 0.3rem;
+  background-color: whitesmoke;
+}
+
+select {
+  padding: 0.6rem;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  border-radius: 0.3rem;
+  background-color: whitesmoke;
 }
 
 .address {
-    margin-top: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  flex: 100%;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1.5rem;
+  border: none;
+  border-top: 1px solid #5a6f0a;
+  border-bottom: 1px solid #5a6f0a;
+}
+
+legend {
+  padding: 0 1rem;
+  font-weight: 600;
 }
 
 .submit-button {
-   margin : 1rem 40%;
+  flex: 60%;
+  margin-top: 2rem;
+  padding: 0.6rem 1.5rem;
+  border-style: none;
+  border-radius: 0.3rem;
+  margin: 1rem;
+  background-color: #93ad18;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .close-modal {
-    position: relative;
-    padding: 0 0.2rem;
-    border-radius: 50%;
-    color: white;
-    background-color: black;
+  position: relative;
+  padding: 0 0.2rem;
+  border-radius: 50%;
+  color: white;
+  background-color: black;
 }

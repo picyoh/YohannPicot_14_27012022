@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
 import ReactModal from 'react-modal'
-import setModal from './form/employeeSlice'
+import setModal from './form/formSlice'
 
 const customStyle = {
     content: {
@@ -36,8 +36,8 @@ function Modal() {
                 contentLabel="employee created"
             >
                 <p>Employee Created!</p>
+                <button className='close-modal' onClick={closeModal}>X</button>
             </ReactModal>
-            <button className='close-modal' onClick={closeModal}>X</button>
         </>
     )
 }

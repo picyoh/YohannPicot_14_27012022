@@ -9,8 +9,10 @@ function CreateEmployee() {
     return (
         <div className='create'>
             <Header />
+            <nav>
+                <Link className='nav' to='/employee-list'>View Current Employees</Link>
+            </nav>
             <div className='container'>
-                <Link to='/employee-list'>View Current Employees</Link>
                 <h2>Create Employee</h2>
                 <EmployeeForm />
                 <FormModal />

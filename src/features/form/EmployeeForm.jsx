@@ -7,8 +7,11 @@ import { SelectUi } from '../selectUi/SelectUi'
 import { state } from '../selectUi/datas/state'
 import { department } from '../selectUi/datas/department'
 
+import Input from './inputCreator'
+
 import { useDispatch } from 'react-redux';
-import { getForm, setDatas, setModal } from './employeeSlice'
+import { getForm, setDatas, setModal } from './formSlice'
+
 
 function EmployeeForm() {
 
@@ -41,54 +44,67 @@ function EmployeeForm() {
         }
     }
 
-return (
-    <form id='create-employee' onSubmit={saveEmployee}>
-        <label htmlFor='firstName'>First Name</label>
-        <input type='text' id='firstName' />
+    return (
+        <form id='create-employee' onSubmit={saveEmployee}>
+            {/* <Input /> */}
+            <div className='inputWrap'>
+                <label htmlFor='firstName'>First Name</label>
+                <input type='text' id='firstName' />
+            </div>
+            <div className='inputWrap'>
+                <label htmlFor='lastName'>Last Name</label>
+                <input type='text' id='lastName' />
+            </div>
+            <div className='inputWrap'>
+                <label htmlFor='dateOfBirth'>Date of Birth</label>
+                <Datetime
+                    inputProps={{ id: "dateOfBirth" }}
+                    timeFormat={false}
+                    onChange={changeBirth}
+                    value={birthDay}
+                />
+            </div>
+            <div className='inputWrap'>
+                <label htmlFor='start-date'>Start Date</label>
+                <Datetime
+                    inputProps={{ id: "startDate" }}
+                    timeFormat={false}
+                    onChange={changeStart}
+                    value={startDay}
+                />
+            </div>
+            <fieldset className='address'>
+                <legend>Address</legend>
 
-        <label htmlFor='lastName'>Last Name</label>
-        <input type='text' id='lastName' />
-
-        <label htmlFor='dateOfBirth'>Date of Birth</label>
-        <Datetime
-            inputProps={{ id: "dateOfBirth" }}
-            timeFormat={false}
-            onChange={changeBirth}
-            value={birthDay}
-        />
-
-        <label htmlFor='start-date'>Start Date</label>
-        <Datetime
-            inputProps={{ id: "startDate" }}
-            timeFormat={false}
-            onChange={changeStart}
-            value={startDay}
-        />
-        <fieldset className='address'>
-            <legend>Address</legend>
-
-            <label htmlFor="street">Street</label>
-            <input id="street" type="text" />
-
-            <label htmlFor="city">City</label>
-            <input id="city" type="text" />
-
-            <SelectUi
-                name='state'
-                options={state}
-            />
-
-            <label htmlFor="zipCode">Zip Code</label>
-            <input id="zipCode" type="number" />
-        </fieldset>
-        <SelectUi
-            name='department'
-            options={department}
-        />
-        <br />
-        <button className='submit-button'>Save</button>
-    </form>
-)
+                <div className='inputWrap'>
+                    <label htmlFor="street">Street</label>
+                    <input id="street" type="text" />
+                </div>
+                <div className='inputWrap'>
+                    <label htmlFor="city">City</label>
+                    <input id="city" type="text" />
+                </div>
+                <div className='inputWrap'>
+                    <SelectUi
+                        name='state'
+                        options={state}
+                    />
+                </div>
+                <div className='inputWrap'>
+                    <label htmlFor="zipCode">Zip Code</label>
+                    <input id="zipCode" type="number" />
+                </div>
+            </fieldset>
+            <div className='inputWrap'>
+                <SelectUi
+                    name='department'
+                    options={department}
+                />
+            </div>
+            <br />
+            <button className='submit-button'>Save</button>
+        </form>
+    )
 }
 
 export default EmployeeForm
