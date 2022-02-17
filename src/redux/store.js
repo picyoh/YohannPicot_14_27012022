@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import employeeReducer from '../features/form/employeeSlice'
+import formReducer from '../features/form/formSlice'
 import { rrtableReducer } from "react-redux-table";
 
 export const store = configureStore({
     reducer: {
-        employee: employeeReducer,
+        form: formReducer,
         rrtable: rrtableReducer 
     }
 })

@@ -8,7 +8,12 @@ function SelectUi(props) {
             <label htmlFor={name}>{upperName}</label>
             <select name={name} id={name}>
                 {options.map((option, index) => {
-                    return <option key={index}>{option.name}</option>
+                    let optionName;
+                    (option.name === undefined) ?
+                    (optionName = option):
+                    (optionName = option.name);
+
+                    return <option key={index}>{optionName}</option>
                 })}
             </select>
         </>

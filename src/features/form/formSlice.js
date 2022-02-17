@@ -1,35 +1,66 @@
-import { createSlice, current } from '@reduxjs/toolkit'
+import { createSlice, current } from "@reduxjs/toolkit";
 
 export const formSlice = createSlice({
-    name:'form',
-    initialState: {
-        datas: [],
-        employee: [
-            {cellValue: "",category:"firstName"},
-            {cellValue: "",category:"lastName"},
-            {cellValue: "",category:"dateOfBirth"},
-            {cellValue: "",category:"startDate"},
-            {cellValue: "",category:"street"},
-            {cellValue: "",category:"city"},
-            {cellValue: "",category:"state"},
-            {cellValue: "",category:"zipCode"},
-            {cellValue: "",category:"department"},
-        ],
-        modal: false,
+  name: "form",
+  initialState: {
+    datas: [],
+    currentEmployee: {
+      firstName: "hello",
+      lastName: "",
+      dateOfBirth: "",
+      startDate: "",
+      street: "",
+      city: "",
+      state: "",
+      zipCode: "",
+      department: "",
     },
-    reducers: {
-        setDatas: (state, action) => {
-            state.datas.push(action.payload)
-        },
-        getForm: (state, action) => {
-            const {cellValue, category} = action.payload;
-            const newRow = state.employee.findIndex(row => row.category === category)
-            state.employee[newRow].cellValue = cellValue
-        },
-        setModal: (state) => {
-            state.modal = !state.modal
-        }
-    }
+    modal: false,
+  },
+  reducers: {
+    setDatas: (state, action) => {
+      state.datas.push(action.payload);
+    },
+    getForm: (state, action) => {
+      const { category, value } = action.payload;
+      switch (category) {
+        case "firstName":
+          state.currentEmployee.firstName = value;
+          break;
+        case "lastName":
+          state.currentEmployee.lastName = value;
+          break;
+        case "dateOfBirth":
+          state.currentEmployee.dateOfBirth = value;
+          break;
+        case "startDate":
+          state.currentEmployee.startDate = value;
+          break;
+        case "street":
+          state.currentEmployee.street = value;
+          break;
+        case "city":
+          state.currentEmployee.city = value;
+          break;
+        case "state":
+          state.currentEmployee.state = value;
+          break;
+        case "zipCode":
+          state.currentEmployee.zipCode = value;
+          break;
+        case "department":
+          state.currentEmployee.department = value;
+          break;
+
+        default:
+          return state;
+      }
+    },
+    setModal: (state) => {
+        console.log(state.modal)
+      state.modal = !state.modal;
+    },
+  },
 });
 
 export const { setDatas, setModal, getForm } = formSlice.actions;

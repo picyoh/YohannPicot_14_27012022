@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Table } from 'react-redux-table';
 
 import { useStore, useSelector } from 'react-redux'
-import { setDatas } from '../features/form/employeeSlice'
+import { setDatas } from '../features/form/formSlice'
 
 import { headArray } from '../features/table/dataFormat/tableHead'
 

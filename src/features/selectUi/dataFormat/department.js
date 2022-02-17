@@ -1,4 +1,4 @@
-export const department = [
+export const departmentObj = [
     {
         "name": "Sales",
     },
@@ -15,3 +15,5 @@ export const department = [
         "name": "Legal",
     },
 ];
+
+export const department = ["Sales", "Marketing", "Engeneering", "Human Resources", "Legal"];

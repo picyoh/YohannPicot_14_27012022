@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
 import ReactModal from 'react-modal'
-import setModal from './form/formSlice'
+import { setModal } from './form/formSlice'
 
 const customStyle = {
     content: {
@@ -19,7 +19,9 @@ ReactModal.setAppElement('#root');
 
 function Modal() {
     const dispatch = useDispatch();
-    const modalIsOpen = useSelector((state) => state.employee.modal)
+    const state = useSelector((state)=> state)
+    const modalIsOpen = useSelector((state) => state.form.modal)
+    console.log(state.form.modal)
     const afterOpenModal = () => {
     }
     const closeModal = () => {
