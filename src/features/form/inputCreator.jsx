@@ -1,7 +1,13 @@
-import React, { useState } from 'react'
-import { useStore, useSelector, useDispatch } from 'react-redux';
+import React from 'react'
+
+import { useSelector, useDispatch } from 'react-redux';
+import { getForm } from './formSlice';
 
 import { formInputs } from './dataFormat/formInputs'
+import { initDate, formatDate } from './dateHandler'
+
+
+import Error from '../../pages/Error'
 
 import Datetime from 'react-datetime'
 import "react-datetime/css/react-datetime.css";
@@ -10,14 +16,40 @@ import { SelectUi } from '../selectUi/SelectUi'
 import { department } from '../selectUi/dataFormat/department'
 import { state } from '../selectUi/dataFormat/state'
 
-
-import Error from '../../pages/Error'
-
 function Inputs() {
+    const dispatch = useDispatch();
+    // Date params from redux store
+    const startDate = useSelector((state) => state.form.currentEmployee.startDate);
+    const dateOfBirth = useSelector((state) => state.form.currentEmployee.dateOfBirth);
+    // date value selector
+    const dateValue = (inputName) => {
+        if (inputName === "startDate") {
+            return startDate;
+        }
+        if (inputName === "dateOfBirth") {
+            return dateOfBirth;
+        }
+    }
+    // set intial date values
+    if (startDate === "") {
+        const initDateObj = initDate();
+        initDateObj.forEach(obj => {
+            dispatch(getForm({ category: obj.category, value: obj.value }))
+        })
+    }
+    // date event handler
+    const changeDate = (e) => {
+        console.log(e, e._d, e._i);
+        if (e._i === startDate) {
+            const formatedDate = formatDate(e._d, "startDate")
+            dispatch(getForm({ category: 'startDate', value: formatedDate }))
+        }
+        if (e._i === dateOfBirth) {
+            const minimalDate = formatDate(e._d, "dateOfBirth")
+            dispatch(getForm({ category: 'dateOfBirth', value: minimalDate }))
+        }
+    }
 
-    // Date params
-    const employee = useSelector((state)=> state.form.employee)
-    const [birthDay, changeBirth] = useState(new Date());
     // Select params
     const options = (name) => {
         if (name === "state") return state;
@@ -42,8 +74,8 @@ function Inputs() {
                         <Datetime
                             inputProps={{ id: inputName }}
                             timeFormat={false}
-                            onChange={changeBirth}
-                            value={birthDay}
+                            onChange={changeDate}
+                            value={dateValue(inputName)}
                         />
                     </div>
                 )

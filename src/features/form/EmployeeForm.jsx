@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import Inputs from './inputCreator'
 
@@ -23,8 +23,7 @@ function EmployeeForm() {
             if (index === btnIndex) return;
             // set form datas to redux store
             dispatch(getForm({category: input.id, value: input.value}));
-            formDatas.push({ cellValue: input.value, category: input.id })
-            
+            formDatas.push({ cellValue: input.value, category: input.id });
         })
         // form validation to set datas
         if (formDatas.length === 9) {

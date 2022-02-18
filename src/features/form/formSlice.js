@@ -1,11 +1,11 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 export const formSlice = createSlice({
   name: "form",
   initialState: {
     datas: [],
     currentEmployee: {
-      firstName: "hello",
+      firstName: "",
       lastName: "",
       dateOfBirth: "",
       startDate: "",
@@ -57,7 +57,6 @@ export const formSlice = createSlice({
       }
     },
     setModal: (state) => {
-        console.log(state.modal)
       state.modal = !state.modal;
     },
   },

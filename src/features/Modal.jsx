@@ -19,9 +19,8 @@ ReactModal.setAppElement('#root');
 
 function Modal() {
     const dispatch = useDispatch();
-    const state = useSelector((state)=> state)
     const modalIsOpen = useSelector((state) => state.form.modal)
-    console.log(state.form.modal)
+    
     const afterOpenModal = () => {
     }
     const closeModal = () => {
