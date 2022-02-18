@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Inputs from './inputCreator'
+import Inputs from './Inputs'
 
 import { useDispatch } from 'react-redux';
 import { getForm, setDatas, setModal } from './formSlice'

@@ -6,12 +6,12 @@ export const selectSlice = createSlice({
     datas: [],
   },
   reducers: {
-    getDatas: (state, action) => {
+    selectSet: (state, action) => {
       state.datas.push(action.payload);
     },
   }
 });
 
-export const { getDatas } = selectSlice.actions;
+export const { selectSet } = selectSlice.actions;
 
 export default selectSlice.reducer;
