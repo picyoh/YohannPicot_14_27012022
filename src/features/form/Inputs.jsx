@@ -5,13 +5,14 @@ import { formInputs } from './dataFormat/formInputs'
 import Error from '../../pages/Error'
 import Date from '../date/Date'
 
-import { SelectUi } from '../selectUi/SelectUi'
-import { department } from '../selectUi/dataFormat/department'
-import { state } from '../selectUi/dataFormat/state'
+import { RmSelect } from '../rmSelect/RmSelect'
+import { rmDispatch } from '../rmSelect/rmDispatch'
+import { department } from '../rmSelect/dataFormat/department'
+import { state } from '../rmSelect/dataFormat/state'
 
 function Inputs() {
 
-    // Select params
+    // Select options params
     const options = (name) => {
         if (name === "state") return state;
         if (name === "department") return department;
@@ -38,11 +39,11 @@ function Inputs() {
                 )
             }
             if (input.type === 'select') {
+                rmDispatch(input.name, options(input.name));
                 return (
                     <div className='inputWrap' key={index}>
-                        <SelectUi
+                        <RmSelect
                             name={input.name}
-                            options={options(input.name)}
                         />
                     </div>
                 )

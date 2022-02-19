@@ -11,7 +11,7 @@ import "react-datetime/css/react-datetime.css";
 function Date(props) {
     const input = props;
     const inputName = input.name;
-    console.log(input)
+    // console.log(input)
 
     const dispatch = useDispatch();
     // Date params from redux store

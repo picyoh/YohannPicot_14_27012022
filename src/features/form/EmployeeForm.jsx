@@ -22,7 +22,7 @@ function EmployeeForm() {
             // exclude button
             if (index === btnIndex) return;
             // set form datas to redux store
-            dispatch(getForm({category: input.id, value: input.value}));
+            dispatch(getForm({ category: input.id, value: input.value }));
             formDatas.push({ cellValue: input.value, category: input.id });
         })
         // form validation to set datas
