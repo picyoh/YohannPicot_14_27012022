@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import Header from '../components/Header'
+import Header from '../layouts/Header'
 import EmployeeForm from '../features/form/EmployeeForm'
-import FormModal from '../features/Modal'
+import FormModal from '../features/modal/FormModal'
 
 function CreateEmployee() {
     return (
