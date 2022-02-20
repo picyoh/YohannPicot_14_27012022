@@ -1,12 +1,107 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { createStore, combineReducers } from "redux";
 import { rrtableReducer } from "react-redux-table";
-import formReducer from './features/form/formSlice'
-import selectReducer from './features/rmSelect/rmSlice';
 
-export const store = configureStore({
-    reducer: {
-        form: formReducer,
-        rmSelect: selectReducer,
-        rrtable: rrtableReducer 
-    }
-})
+// state
+const initialState = {
+  datas: [],
+  currentEmployee: {
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    startDate: "",
+    street: "",
+    city: "",
+    state: "",
+    zipCode: "",
+    department: "",
+  },
+  formModal: false,
+  rrtable: true,
+};
+
+// action creators
+const setDatas = (value) => {
+  return {
+    type: "setDatas",
+    payload: value,
+  };
+};
+
+const getForm = (value, category) => {
+  return {
+    type: "getForm",
+    payload: value,
+    category: category,
+  };
+};
+
+const setFormModal = () => {
+  return {
+    type: "formModal",
+  };
+};
+
+// reducer
+function datasReducer(state = [], action) {
+  if (action.type === "setDatas") {
+    return [action.payload];
+  }
+  return state;
+}
+
+function formReducer(state = {}, action) {
+  switch (action.type) {
+    case "getForm":
+      switch (action.category) {
+        case "firstName":
+          return { ...state, firstName: action.payload };
+        case "lastName":
+          return { ...state, lastName: action.payload };
+        case "dateOfBirth":
+          return { ...state, dateOfBirth: action.payload };
+        case "startDate":
+          return { ...state, startDate: action.payload };
+        case "street":
+          return { ...state, street: action.payload };
+        case "city":
+          return { ...state, city: action.payload };
+        case "state":
+          return { ...state, state: action.payload };
+        case "zipCode":
+          return { ...state, zipCode: action.payload };
+        case "department":
+          return { ...state, department: action.payload };
+        default:
+          return state;
+      }
+    default:
+      return state;
+  }
+}
+
+function modalReducer(state = false, action) {
+  if (action.type === 'formModal') {
+    return !state;
+  }
+  return state;
+}
+
+const rootReducer = combineReducers({
+  datas: datasReducer,
+  currentEmployee: formReducer,
+  formModal: modalReducer,
+  rrtable: rrtableReducer,
+});
+
+const reduxDevtools =
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+
+// store
+const store = createStore(rootReducer, initialState, reduxDevtools);
+
+store.subscribe(() => {
+  const state = store.getState();
+  console.log(state);
+});
+
+export { store, setDatas, getForm, setFormModal };

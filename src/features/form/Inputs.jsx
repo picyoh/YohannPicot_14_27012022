@@ -7,8 +7,8 @@ import Date from '../date/Date'
 
 import { RmSelect } from '../rmSelect/RmSelect'
 import { rmDispatch } from '../rmSelect/rmDispatch'
-import { department } from '../rmSelect/dataFormat/department'
-import { state } from '../rmSelect/dataFormat/state'
+import { department } from '../dropdowns/dataFormat/department'
+import { state } from '../dropdowns/dataFormat/state'
 
 function Inputs() {
 
