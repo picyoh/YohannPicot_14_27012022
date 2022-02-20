@@ -19,7 +19,7 @@ ReactFormModal.setAppElement('#root');
 
 function FormModal() {
     const dispatch = useDispatch();
-    const FormModalIsOpen = useSelector((state) => state.formFormModal)
+    const FormModalIsOpen = useSelector((state) => state.formModal)
     
     const afterOpenFormModal = () => {
         // style here

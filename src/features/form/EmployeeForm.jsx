@@ -1,40 +1,110 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import Inputs from './Inputs'
+import Datetime from 'react-datetime'
+import "react-datetime/css/react-datetime.css";
+
+import { state } from '../dropdowns/dataFormat/state'
+import { department } from '../dropdowns/dataFormat/department'
+
+import { RmSelect, rmSelect } from '../rmSelect/RmSelect'
+import FormModal from '../modal/FormModal'
 
 import { useDispatch } from 'react-redux';
-import { getForm, setDatas, setModal } from './formSlice'
-
+import { getForm, setDatas } from '../../store'
 
 function EmployeeForm() {
 
-    const dispatch = useDispatch();
+    const [birthDay, changeBirth] = useState(new Date())
+    const [startDay, changeStart] = useState(new Date())
+    const [newEmployeeSaved, savingEmployee] = useState(false);
 
+    const dispatch = useDispatch();
     const saveEmployee = (e) => {
         e.preventDefault();
-
+        // check names in datas
+        // birthday > startDay
+        const formDatas = [];
         const inputs = Array.from(e.target);
-        const btnIndex = inputs.length - 1;
-        let formDatas = [];
 
-        // update redux store on submit
+        // create new data object 
         inputs.forEach((input, index) => {
+            // exclude fielset
+            if (index === 4) return;
             // exclude button
-            if (index === btnIndex) return;
-            // set form datas to redux store
-            dispatch(getForm({ category: input.id, value: input.value }));
-            formDatas.push({ cellValue: input.value, category: input.id });
+            if (input.value === '') return;
+            // set data Object
+            formDatas.push({ cellValue: input.value, category: input.id })
+            // set form datas to data pool
+            // dispatch(getForm( input.value, input.id ));
         })
-        // form validation to set datas
-        if (formDatas.length === 9) {
-            dispatch(setDatas(formDatas));
-            dispatch(setModal());
-        }
+
+        console.log(formDatas)
+        dispatch(setDatas(formDatas));
+
+        savingEmployee(true)
+    }
+
+    if (newEmployeeSaved) {
+        return (
+            <FormModal />,
+            savingEmployee(false)
+        )
     }
 
     return (
         <form id='create-employee' onSubmit={saveEmployee}>
-            <Inputs />
+            <div className='inputWrap'>
+                <label htmlFor='first-name'>First Name</label>
+                <input type='text' id='first-name' />
+            </div>
+            <div className='inputWrap'>
+                <label htmlFor='last-name'>Last Name</label>
+                <input type='text' id='last-name' />
+            </div>
+            <div className='inputWrap'>
+                <label htmlFor='date-of-birth'>Date of Birth</label>
+                <Datetime
+                    inputProps={{ id: "date-of-birth" }}
+                    timeFormat={false}
+                    onChange={changeBirth}
+                    value={birthDay}
+                />
+            </div>
+            <div className='inputWrap'>
+                <label htmlFor='start-date'>Start Date</label>
+                <Datetime
+                    inputProps={{ id: "start-date" }}
+                    timeFormat={false}
+                    onChange={changeStart}
+                    value={startDay}
+                />
+            </div>
+            <fieldset className='address'>
+                <legend>Address</legend>
+                <div className='inputWrap'>
+                    <label htmlFor="street">Street</label>
+                    <input id="street" type="text" />
+
+                </div>
+                <div className='inputWrap'>
+                    <label htmlFor="city">City</label>
+                    <input id="city" type="text" />
+                </div>
+                <div className='inputWrap'>
+                    <RmSelect
+                        name='state'
+                        options={state}
+                    />
+                </div>
+                <div className='inputWrap'>
+                    <label htmlFor="zip-code">Zip Code</label>
+                    <input id="zip-code" type="number" />
+                </div>
+            </fieldset>
+            <RmSelect
+                name='department'
+                options={department}
+            />
             <br />
             <button className='submit-button'>Save</button>
         </form>

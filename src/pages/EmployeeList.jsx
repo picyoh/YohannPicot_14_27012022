@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { Table } from 'react-redux-table';
 
 import { useStore, useSelector } from 'react-redux'
-import { setDatas } from '../features/form/formSlice'
+import { setDatas } from '../store'
 
 import { headArray } from '../features/table/dataFormat/tableHead'
 
-import { rowsContent } from '../mockedDatas/mockedTable'
+import { rowsContent } from '../features/table/mockedDatas/mockedTable'
 
 function EmployeeList() {
   // get datas
