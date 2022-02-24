@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import Inputs from './Inputs'
+
 import Datetime from 'react-datetime'
 import "react-datetime/css/react-datetime.css";
 
@@ -13,11 +15,8 @@ import { getForm, setDatas } from '../../store'
 
 function EmployeeForm() {
 
-    const minimumYear = new Date().getFullYear() - 13;
-    const [birthDay, changeBirth] = useState(new Date().setFullYear(minimumYear))
-    const [startDay, changeStart] = useState(new Date())
-
     const dispatch = useDispatch();
+    // dispatch Datas to rmSelect reducer
     dispatch(rmSet({ name: 'state', options: state }));
     dispatch(rmSet({ name: 'department', options: department }));
 
@@ -47,58 +46,7 @@ function EmployeeForm() {
 
     return (
         <form id='create-employee' onSubmit={saveEmployee}>
-            <div className='inputWrap'>
-                <label htmlFor='firstName'>First Name</label>
-                <input type='text' id='firstName' />
-            </div>
-            <div className='inputWrap'>
-                <label htmlFor='lastName'>Last Name</label>
-                <input type='text' id='lastName' />
-            </div>
-            <div className='inputWrap'>
-                <label htmlFor='dateOfBirth'>Date of Birth</label>
-                <Datetime
-                    inputProps={{ id: "dateOfBirth" }}
-                    timeFormat={false}
-                    onChange={changeBirth}
-                    value={birthDay}
-                />
-            </div>
-            <div className='inputWrap'>
-                <label htmlFor='startDate'>Start Date</label>
-                <Datetime
-                    inputProps={{ id: "startDate" }}
-                    timeFormat={false}
-                    onChange={changeStart}
-                    value={startDay}
-                />
-            </div>
-            <fieldset className='address'>
-                <legend>Address</legend>
-                <div className='inputWrap'>
-                    <label htmlFor="street">Street</label>
-                    <input id="street" type="text" />
-
-                </div>
-                <div className='inputWrap'>
-                    <label htmlFor="city">City</label>
-                    <input id="city" type="text" />
-                </div>
-                <div className='inputWrap'>
-                    <RmSelect
-                        name='state'
-                    />
-                </div>
-                <div className='inputWrap'>
-                    <label htmlFor="zipCode">Zip Code</label>
-                    <input id="zipCode" type="number" />
-                </div>
-            </fieldset>
-            <div className='inputWrap'>
-                <RmSelect
-                    name='department'
-                />
-            </div>
+            <Inputs />
             <br />
             <button className='submit-button'>Save</button>
         </form>
