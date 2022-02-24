@@ -13,7 +13,8 @@ import { getForm, setDatas } from '../../store'
 
 function EmployeeForm() {
 
-    const [birthDay, changeBirth] = useState(new Date())
+    const minimumYear = new Date().getFullYear() - 13;
+    const [birthDay, changeBirth] = useState(new Date().setFullYear(minimumYear))
     const [startDay, changeStart] = useState(new Date())
 
     const dispatch = useDispatch();

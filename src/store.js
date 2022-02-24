@@ -119,7 +119,7 @@ const store = createStore(rootReducer, initialState, reduxDevtools);
 
 store.subscribe(() => {
   const state = store.getState();
-  console.log(state);
+  // console.log(state);
 });
 
 export { store, setDatas, getForm, setFormModal, rmSet };
