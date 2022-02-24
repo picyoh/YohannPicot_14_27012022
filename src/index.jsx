@@ -24,7 +24,7 @@ ReactDOM.render(
           <Route path='/' element={<CreateEmployee />} />
           <Route path='/employee-list' element={<EmployeeList />} />
           <Route path='/error' element={<Error />} />
-          <Route path='/*' element={<Navigate to='/error' />} />
+          {/* <Route path='/*' element={<Navigate to='/error' />} /> */}
         </Routes>
       </Router>
     </React.StrictMode>
