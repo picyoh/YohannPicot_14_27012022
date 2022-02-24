@@ -1,34 +1,41 @@
 import React from 'react'
-import { useStore, useSelector, useDispatch } from 'react-redux'
-// import { setIndex } from './rmSlice'
+import { useSelector } from 'react-redux'
 
 function RmSelect(props) {
-    const { name } = props;
-
+    const { name, options, title } = props;
+    let optionsDatas;
+    let label;
     // get datas from store
-    // const rmSelector = useSelector((state) => state.rmSelect.datas);
-    
-    // const store = useStore();
-    // const lastindex = store.getState().rmSelect.lastIndex;
-    // const lastIndex = useSelector((state) => state.rmSelect.lastIndex)
-    
-    // get select index in store
-    // const index = rmSelector.findIndex((data) => data.name === name);
-    // console.log({"index":index, "lastI": lastIndex, "lasti": lastindex})
+    const rmSelector = useSelector((state) => state.rmSelect);
 
-    // const options = rmSelector[index].options;
-
-    // // get title or create one
-    // let title = rmSelector[index].title
-    // if (rmSelector[index].title === undefined) {
-    //     title = name.charAt(0).toUpperCase() + name.slice(1);
-    // }
+    // Options dispatched
+    if (options === undefined) {
+        // get select index in store
+        const index = rmSelector.findIndex((data) => data.name === name);
+        // get options form index
+        optionsDatas = rmSelector[index].options;
+        // get title or create one
+        if (rmSelector[index].title === undefined) {
+            label = name.charAt(0).toUpperCase() + name.slice(1);
+        }
+    }
+    // Options passed to props
+    else {
+        optionsDatas = options;
+        if (title === undefined) {
+            label = name.charAt(0).toUpperCase() + name.slice(1);
+        }
+        // title passed to props 
+        else {
+            label = title;
+        }
+    }
 
     return (
         <>
-            {/* <label htmlFor={name}>{title}</label>
+            <label htmlFor={name}>{label}</label>
             <select name={name} id={name}>
-                {options.map((option, index) => {
+                {optionsDatas.map((option, index) => {
                     let optionName;
                     (option.name === undefined) ?
                         (optionName = option) :
@@ -36,7 +43,7 @@ function RmSelect(props) {
 
                     return <option key={index}>{optionName}</option>
                 })}
-            </select> */}
+            </select>
         </>
     )
 }

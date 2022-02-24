@@ -16,14 +16,15 @@ const initialState = {
     department: "",
   },
   formModal: false,
+  rmSelect: [],
   rrtable: true,
 };
 
 // action creators
-const setDatas = (value) => {
+const setDatas = (datas) => {
   return {
     type: "setDatas",
-    payload: value,
+    payload: datas,
   };
 };
 
@@ -44,7 +45,7 @@ const setFormModal = () => {
 // reducer
 function datasReducer(state = [], action) {
   if (action.type === "setDatas") {
-    return [action.payload];
+    return [...state, action.payload];
   }
   return state;
 }
@@ -80,8 +81,24 @@ function formReducer(state = {}, action) {
 }
 
 function modalReducer(state = false, action) {
-  if (action.type === 'formModal') {
+  if (action.type === "formModal") {
     return !state;
+  }
+  return state;
+}
+
+const rmSet = (obj) => {
+  return {
+    type: "rmSelect",
+    payload: obj,
+  };
+};
+
+function rmSelectReducer(state = [], action) {
+  if (action.type === "rmSelect") {
+    if(state.findIndex(select => select.name === action.payload.name) === -1){
+      return [...state, action.payload];
+    }
   }
   return state;
 }
@@ -90,6 +107,7 @@ const rootReducer = combineReducers({
   datas: datasReducer,
   currentEmployee: formReducer,
   formModal: modalReducer,
+  rmSelect: rmSelectReducer,
   rrtable: rrtableReducer,
 });
 
@@ -104,4 +122,4 @@ store.subscribe(() => {
   console.log(state);
 });
 
-export { store, setDatas, getForm, setFormModal };
+export { store, setDatas, getForm, setFormModal, rmSet };
