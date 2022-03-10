@@ -2,29 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Table } from 'react-redux-table';
 
-import { useStore, useSelector } from 'react-redux'
-import { setDatas } from '../store'
+import { useSelector } from 'react-redux'
 
 import { headArray } from '../features/table/dataFormat/tableHead'
 
-import { rowsContent } from '../features/table/mockedDatas/mockedTable'
-
 function EmployeeList() {
   // get datas
-  const store = useStore();
-  const employeeDatas = useSelector((state) => state.employee.datas);
+  const employeesDatas = useSelector((state) => state.datas);
+  console.log(employeesDatas)
   // load mocked data
-  if (employeeDatas.length < 2) {
-    rowsContent.forEach(row => {
-      store.dispatch(setDatas(row))
-    })
-  }
 
   return (
     <div id='employee-div' className='container'>
       <Table
         headersArray={headArray}
-        rowsContent={employeeDatas}
+        rowsContent={employeesDatas}
         title="Current Employees"
         filter={true}
         entriesSelector={[10, 100]}

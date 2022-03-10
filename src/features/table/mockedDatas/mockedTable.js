@@ -1,4 +1,4 @@
-export const rowsContent = [
+export const mockedRows = [
     [
         { cellValue: "Fred", category: "firstName" },
         { cellValue: "Parrish", category: "lastName" },

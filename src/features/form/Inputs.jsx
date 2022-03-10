@@ -7,7 +7,7 @@ import Error from '../../pages/Error'
 import Datetime from 'react-datetime'
 import "react-datetime/css/react-datetime.css";
 
-import { RmSelect } from '../rmSelect/RmSelect'
+// import  RmSelect  from 'react-mini-select'
 
 function Inputs() {
 
@@ -51,9 +51,9 @@ function Inputs() {
             if (input.type === 'select') {
                 return (
                     <div className='inputWrap' key={index}>
-                        <RmSelect
+                        {/* <RmSelect
                             name={input.name}
-                        />
+                        /> */}
                     </div>
                 )
             }

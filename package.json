@@ -11,6 +11,7 @@
     "react-redux-table": "^1.0.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "^5.0.0",
+    "rr-mini-select": "^0.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -21,8 +22,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {

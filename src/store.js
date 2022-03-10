@@ -1,9 +1,10 @@
 import { createStore, combineReducers } from "redux";
 import { rrtableReducer } from "react-redux-table";
+import { mockedRows } from "./features/table/mockedDatas/mockedTable";
 
 // state
 const initialState = {
-  datas: [],
+  datas: mockedRows,
   currentEmployee: {
     firstName: "",
     lastName: "",
@@ -43,7 +44,7 @@ const setFormModal = () => {
 };
 
 // reducer
-function datasReducer(state = [], action) {
+function datasReducer(state = mockedRows, action) {
   if (action.type === "setDatas") {
     return [...state, action.payload];
   }
@@ -116,10 +117,5 @@ const reduxDevtools =
 
 // store
 const store = createStore(rootReducer, initialState, reduxDevtools);
-
-store.subscribe(() => {
-  const state = store.getState();
-  // console.log(state);
-});
 
 export { store, setDatas, getForm, setFormModal, rmSet };

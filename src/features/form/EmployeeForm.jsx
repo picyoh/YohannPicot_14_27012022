@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import Inputs from './Inputs'
 
-import Datetime from 'react-datetime'
 import "react-datetime/css/react-datetime.css";
 
 import { state } from '../dropdowns/dataFormat/state'
 import { department } from '../dropdowns/dataFormat/department'
-import { RmSelect } from '../rmSelect/RmSelect'
 import { rmSet, setFormModal } from '../../store'
 
 import { useDispatch } from 'react-redux';
