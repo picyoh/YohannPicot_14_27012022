@@ -8,9 +8,8 @@ import { headArray } from '../features/table/dataFormat/tableHead'
 
 function EmployeeList() {
   // get datas
-  const employeesDatas = useSelector((state) => state.datas);
+  const employeesDatas = useSelector((state) => state.datas.employee);
   console.log(employeesDatas)
-  // load mocked data
 
   return (
     <div id='employee-div' className='container'>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 import { formInputs } from './dataFormat/formInputs'
 
@@ -7,7 +7,9 @@ import Error from '../../pages/Error'
 import Datetime from 'react-datetime'
 import "react-datetime/css/react-datetime.css";
 
-// import  RmSelect  from 'react-mini-select'
+import { RmSelect } from 'pic-r-test'
+import { state } from '..//dropdowns/dataFormat/state'
+import { department } from '..//dropdowns/dataFormat/department'
 
 function Inputs() {
 
@@ -23,6 +25,12 @@ function Inputs() {
     const changeDate = (name) => {
         if (name === 'dateOfBirth') return changeBirth;
         if (name === 'startDate') return changeStart;
+    }
+
+    // Select params
+    const options = (name) => {
+        if (name === "state") return state;
+        if (name === "department") return department;
     }
 
     return (
@@ -51,9 +59,10 @@ function Inputs() {
             if (input.type === 'select') {
                 return (
                     <div className='inputWrap' key={index}>
-                        {/* <RmSelect
+                        <RmSelect
                             name={input.name}
-                        /> */}
+                            options={options(input.name)}
+                        />
                     </div>
                 )
             }

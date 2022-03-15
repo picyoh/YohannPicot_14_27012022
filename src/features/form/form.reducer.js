@@ -1,5 +1,3 @@
-import {getForm, setFormModal} from '../actions/actions'
-
 const initialState = {
   currentEmployee: {
     firstName: "",
@@ -10,9 +8,9 @@ const initialState = {
     city: "",
     state: "",
     zipCode: "",
-    department: ""
+    department: "",
   },
-  formModal: false
+  formModal: false,
 };
 
 function formReducer(state = initialState, action) {
@@ -41,10 +39,13 @@ function formReducer(state = initialState, action) {
           return state;
       }
     case "formModal":
-      return !state;
+      return {
+        ...state,
+        formModal : !state.formModal
+      };
     default:
       return state;
   }
 }
 
-export {formReducer}
+export { formReducer };

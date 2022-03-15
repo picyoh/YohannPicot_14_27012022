@@ -1,12 +1,12 @@
-import { setDatas } from "../actions/actions";
+import { mockedRows } from "./mockedDatas/mockedTable";
 
 const initialState = {
-  datas: [],
+  employee: mockedRows,
 };
 
 function datasReducer(state = initialState, action) {
   if (action.type === "setDatas") {
-    return [...state, action.payload];
+    return { ...state, employee: [...state.employee, action.payload] };
   }
   return state;
 }

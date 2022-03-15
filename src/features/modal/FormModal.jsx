@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
 import ReactFormModal from 'react-modal'
-import { setFormModal } from '../../store'
+import { setFormModal } from './formModal.actions'
 
 const customStyle = {
     content: {
@@ -19,19 +19,19 @@ ReactFormModal.setAppElement('#root');
 
 function FormModal() {
     const dispatch = useDispatch();
-    const FormModalIsOpen = useSelector((state) => state.formModal)
+    const formModalIsOpen = useSelector((state) => state.formModal.isOpen)
     
     const afterOpenFormModal = () => {
         // style here
     }
     const closeFormModal = () => {
-        dispatch(setFormModal())
+        dispatch(setFormModal(false))
     }
 
     return (
         <>
             <ReactFormModal
-                isOpen={FormModalIsOpen}
+                isOpen={formModalIsOpen}
                 onAfterOpen={afterOpenFormModal}
                 onRequestClose={closeFormModal}
                 style={customStyle}
