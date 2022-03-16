@@ -2,7 +2,7 @@ const SET_DATAS = 'setDatas'
 // action creators
 const setDatas = (datas) => {
     return {
-      type: "setDatas",
+      type: SET_DATAS,
       payload: datas,
     };
   };

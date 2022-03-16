@@ -20,6 +20,11 @@ body {
   background-color: white;
 }
 
+h1{
+  font-size: 3rem;
+  color: #93ad18;
+}
+
 h2 {
   color: #5a6f0a;
 }

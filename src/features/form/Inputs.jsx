@@ -7,7 +7,7 @@ import Error from '../../pages/Error'
 import Datetime from 'react-datetime'
 import "react-datetime/css/react-datetime.css";
 
-import { RmSelect } from 'pic-r-test'
+import { RsSelect } from 'r-simple-select'
 import { state } from '..//dropdowns/dataFormat/state'
 import { department } from '..//dropdowns/dataFormat/department'
 
@@ -59,7 +59,7 @@ function Inputs() {
             if (input.type === 'select') {
                 return (
                     <div className='inputWrap' key={index}>
-                        <RmSelect
+                        <RsSelect
                             name={input.name}
                             options={options(input.name)}
                         />
