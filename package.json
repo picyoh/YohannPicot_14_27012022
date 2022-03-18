@@ -2,8 +2,8 @@
   "name": "hrnet",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://picyoh.github.io/YohannPicot_14_27012022",
   "dependencies": {
-    "core-js": "^3.21.1",
     "r-simple-select": "^0.0.9",
     "react": "^17.0.2",
     "react-datetime": "^3.1.1",
@@ -19,7 +19,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -37,5 +39,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "core-js": "^3.21.1",
+    "gh-pages": "^3.2.3"
   }
 }

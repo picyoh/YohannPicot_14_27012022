@@ -2,8 +2,6 @@
 
 > v1.0.0
 
-![Logo of the project](/public/img/argentBankLogo.png)
-
 This codebase contains the code needed to run the react app for HRnet
 
 This project was bootstrapped with Create React App.
@@ -16,16 +14,16 @@ To launch React App you need to follow these instructions :
 
 ```shell
 
-# Clone front-end
+# Clone the project
 git clone https://github.com/picyoh/YohannPicot_14_27012022
 
-# Move to front-end directory
+# Move to directory
 cd YohannPicot_14_27012022
 
 # Install dependencies
 npm install
 
-# Run react app with backend
+# Run react app
 npm run start 
 ```
 
